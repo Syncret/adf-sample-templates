@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Web1",
+				"description": "web activity description abc",
 				"type": "WebActivity",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -18,6 +19,7 @@
 			},
 			{
 				"name": "Copy Data1",
+				"description": "copy activity description  cbd",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
