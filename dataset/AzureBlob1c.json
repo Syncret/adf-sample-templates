@@ -1,10 +1,6 @@
 {
 	"name": "AzureBlob1c",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "AzureStorage1",
-			"type": "LinkedServiceReference"
-		},
 		"type": "AzureBlob",
 		"typeProperties": {
 			"format": {
