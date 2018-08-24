@@ -1,0 +1,13 @@
+{
+	"name": "AzureBlobStorage2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"sasUri": {
+				"type": "SecureString",
+				"value": "**********"
+			}
+		}
+	}
+}
