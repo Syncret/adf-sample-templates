@@ -1,0 +1,72 @@
+{
+	"name": "pipeline132",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"description": "web activity description abc",
+				"type": "WebActivity",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false
+				},
+				"typeProperties": {
+					"url": "xcv",
+					"method": "POST"
+				}
+			},
+			{
+				"name": "Copy Data1",
+				"description": "copy activity description  cbd",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlob1c3",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "AmazonS3Object1",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"columnCount",
+						"lastModified",
+						{
+							"value": "@pipeline().DataFactory",
+							"type": "Expression"
+						}
+					]
+				}
+			}
+		]
+	}
+}
