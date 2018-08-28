@@ -1,6 +1,10 @@
 {
 	"name": "AmazonS3Object1",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS31",
+			"type": "LinkedServiceReference"
+		},
 		"folder": {
 			"name": "xxxx"
 		},
