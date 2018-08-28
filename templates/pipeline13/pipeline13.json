@@ -15,6 +15,14 @@
 			"type": "string",
 			"defaultValue": "x"
 		},
+		"AzureBlob1c1_properties_typeProperties_fileName": {
+			"type": "string",
+			"defaultValue": "y"
+		},
+		"AzureBlob1c1_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": "x"
+		},
 		"AzureBlob1c_properties_linkedServiceName": {
 			"type": "string",
 			"metadata": {
@@ -80,6 +88,40 @@
 								{
 									"name": "If Condition1",
 									"type": "IfCondition"
+								},
+								{
+									"name": "Copy Data1",
+									"type": "Copy",
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"typeProperties": {
+										"source": {
+											"type": "BlobSource",
+											"recursive": true
+										},
+										"sink": {
+											"type": "BlobSink"
+										},
+										"enableStaging": false,
+										"dataIntegrationUnits": 0
+									},
+									"inputs": [
+										{
+											"referenceName": "AzureBlob1c",
+											"type": "DatasetReference"
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "AzureBlob1c1",
+											"type": "DatasetReference"
+										}
+									]
 								}
 							]
 						}
@@ -87,7 +129,8 @@
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureBlob1c')]"
+				"[concat(variables('factoryId'), '/datasets/AzureBlob1c')]",
+				"[concat(variables('factoryId'), '/datasets/AzureBlob1c1')]"
 			]
 		},
 		{
@@ -112,6 +155,27 @@
 					},
 					"fileName": "[parameters('AzureBlob1c_properties_typeProperties_fileName')]",
 					"folderPath": "[parameters('AzureBlob1c_properties_typeProperties_folderPath')]"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlob1c1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "AzureBlob",
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"nullValue": "\\N",
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": false
+					},
+					"fileName": "[parameters('AzureBlob1c1_properties_typeProperties_fileName')]",
+					"folderPath": "[parameters('AzureBlob1c1_properties_typeProperties_folderPath')]"
 				}
 			}
 		}
