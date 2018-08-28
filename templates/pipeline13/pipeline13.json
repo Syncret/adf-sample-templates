@@ -7,10 +7,6 @@
 			"metadata": "Data Factory Name",
 			"defaultValue": "yujiangit"
 		},
-		"linkedService2_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'linkedService2'"
-		},
 		"AzureBlob1c_properties_typeProperties_fileName": {
 			"type": "string",
 			"defaultValue": "y"
@@ -18,16 +14,6 @@
 		"AzureBlob1c_properties_typeProperties_folderPath": {
 			"type": "string",
 			"defaultValue": "x"
-		},
-		"linkedService2_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "xx"
-		},
-		"pipeline13_properties_activities_2_typeProperties_activities_1_linkedServiceName": {
-			"type": "string",
-			"metadata": {
-				"linkedServiceType": "HDInsight"
-			}
 		},
 		"AzureBlob1c_properties_linkedServiceName": {
 			"type": "string",
@@ -87,40 +73,20 @@
 						]
 					},
 					{
-						"name": "ForEach1",
-						"type": "ForEach",
+						"name": "Execute Pipeline1",
+						"type": "ExecutePipeline",
 						"typeProperties": {
-							"activities": [
-								{
-									"name": "If Condition1",
-									"type": "IfCondition"
-								},
-								{
-									"name": "Hive1",
-									"type": "HDInsightHive",
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"typeProperties": {
-										"scriptPath": ""
-									},
-									"linkedServiceName": {
-										"referenceName": "[parameters('pipeline13_properties_activities_2_typeProperties_activities_1_linkedServiceName')]",
-										"type": "LinkedServiceReference"
-									}
-								}
-							]
+							"pipeline": {
+								"referenceName": "pipeline131",
+								"type": "PipelineReference"
+							}
 						}
 					}
 				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureBlob1c')]",
-				"[concat(variables('factoryId'), '/linkedServices/linkedService2')]"
+				"[concat(variables('factoryId'), '/pipelines/pipeline131')]"
 			]
 		},
 		{
@@ -149,23 +115,52 @@
 			}
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/linkedService2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/pipeline131')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"type": "HDInsight",
-				"typeProperties": {
-					"clusterUri": "http://xxx",
-					"userName": "[parameters('linkedService2_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "**********"
+				"activities": [
+					{
+						"name": "Web1",
+						"description": "web activity description abc",
+						"type": "WebActivity",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false
+						},
+						"typeProperties": {
+							"url": "xcv",
+							"method": "POST"
+						}
 					},
-					"linkedServiceName": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
+					{
+						"name": "Copy Data1",
+						"description": "copy activity description  cbd",
+						"type": "Copy",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "BlobSource",
+								"recursive": true
+							},
+							"enableStaging": false,
+							"dataIntegrationUnits": 0
+						},
+						"inputs": [
+							{
+								"referenceName": "AzureBlob1c1",
+								"type": "DatasetReference"
+							}
+						]
 					}
-				}
+				]
 			}
 		}
 	]
