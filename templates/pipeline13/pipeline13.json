@@ -14,6 +14,12 @@
 		"AzureBlob1c_properties_typeProperties_folderPath": {
 			"type": "string",
 			"defaultValue": "x"
+		},
+		"AzureBlob1c_properties_linkedServiceName": {
+			"type": "string",
+			"metadata": {
+				"linkedServiceType": "AzureBlobStorage"
+			}
 		}
 	},
 	"variables": {
@@ -65,6 +71,18 @@
 								"type": "DatasetReference"
 							}
 						]
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"typeProperties": {
+							"activities": [
+								{
+									"name": "If Condition1",
+									"type": "IfCondition"
+								}
+							]
+						}
 					}
 				]
 			},
@@ -77,6 +95,10 @@
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('AzureBlob1c_properties_linkedServiceName')]",
+					"type": "LinkedServiceReference"
+				},
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
