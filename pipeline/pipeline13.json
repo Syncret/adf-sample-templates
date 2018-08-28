@@ -41,6 +41,16 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pipeline131",
+						"type": "PipelineReference"
+					}
+				}
 			}
 		]
 	}
