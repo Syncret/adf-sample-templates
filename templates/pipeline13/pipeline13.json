@@ -71,22 +71,11 @@
 								"type": "DatasetReference"
 							}
 						]
-					},
-					{
-						"name": "Execute Pipeline1",
-						"type": "ExecutePipeline",
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "pipeline131",
-								"type": "PipelineReference"
-							}
-						}
 					}
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureBlob1c')]",
-				"[concat(variables('factoryId'), '/pipelines/pipeline131')]"
+				"[concat(variables('factoryId'), '/datasets/AzureBlob1c')]"
 			]
 		},
 		{
@@ -112,55 +101,6 @@
 					"fileName": "[parameters('AzureBlob1c_properties_typeProperties_fileName')]",
 					"folderPath": "[parameters('AzureBlob1c_properties_typeProperties_folderPath')]"
 				}
-			}
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline131')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Web1",
-						"description": "web activity description abc",
-						"type": "WebActivity",
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false
-						},
-						"typeProperties": {
-							"url": "xcv",
-							"method": "POST"
-						}
-					},
-					{
-						"name": "Copy Data1",
-						"description": "copy activity description  cbd",
-						"type": "Copy",
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false
-						},
-						"typeProperties": {
-							"source": {
-								"type": "BlobSource",
-								"recursive": true
-							},
-							"enableStaging": false,
-							"dataIntegrationUnits": 0
-						},
-						"inputs": [
-							{
-								"referenceName": "AzureBlob1c1",
-								"type": "DatasetReference"
-							}
-						]
-					}
-				]
 			}
 		}
 	]
