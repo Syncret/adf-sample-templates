@@ -1,0 +1,13 @@
+{
+	"name": "sqltypedataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "testdb"
+		}
+	}
+}
