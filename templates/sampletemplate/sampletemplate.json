@@ -1,0 +1,166 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "yujiangit"
+		},
+		"AzureSqlDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase'"
+		},
+		"FileShare_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'FileShare'"
+		},
+		"filetypedataset_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": ""
+		},
+		"FileShare_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "a"
+		},
+		"sqltypedataset_properties_linkedServiceName": {
+			"type": "string",
+			"metadata": {
+				"linkedServiceType": "AzureSqlDatabase"
+			}
+		},
+		"filetypedataset_properties_linkedServiceName": {
+			"type": "string",
+			"metadata": {
+				"linkedServiceType": "FileServer"
+			}
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/samplepipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "sample pipeline description",
+				"activities": [
+					{
+						"name": "Copy Data1",
+						"description": "sample activity",
+						"type": "Copy",
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"typeProperties": {
+							"source": {
+								"type": "SqlSource"
+							},
+							"sink": {
+								"type": "FileSystemSink"
+							},
+							"enableStaging": false,
+							"dataIntegrationUnits": 0
+						},
+						"inputs": [
+							{
+								"referenceName": "sqltypedataset",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "filetypedataset",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/sqltypedataset')]",
+				"[concat(variables('factoryId'), '/datasets/filetypedataset')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sqltypedataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "sample sql type dataset",
+				"linkedServiceName": {
+					"referenceName": "[parameters('sqltypedataset_properties_linkedServiceName')]",
+					"type": "LinkedServiceReference"
+				},
+				"type": "AzureSqlTable",
+				"typeProperties": {
+					"tableName": "testdb"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/filetypedataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "sample file type dataset",
+				"linkedServiceName": {
+					"referenceName": "[parameters('filetypedataset_properties_linkedServiceName')]",
+					"type": "LinkedServiceReference"
+				},
+				"type": "FileShare",
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"nullValue": "\\N",
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": false
+					},
+					"folderPath": "[parameters('filetypedataset_properties_typeProperties_folderPath')]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FileShare')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase_connectionString')]"
+				}
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FileShare')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "\\\\aa",
+					"userId": "[parameters('FileShare_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			}
+		}
+	]
+}
