@@ -1,6 +1,7 @@
 {
 	"name": "filetypedataset",
 	"properties": {
+		"description": "sample file type dataset",
 		"linkedServiceName": {
 			"referenceName": "FileShare",
 			"type": "LinkedServiceReference"

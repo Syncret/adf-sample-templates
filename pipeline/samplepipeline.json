@@ -1,9 +1,11 @@
 {
 	"name": "samplepipeline",
 	"properties": {
+		"description": "sample pipeline description",
 		"activities": [
 			{
 				"name": "Copy Data1",
+				"description": "sample activity",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
