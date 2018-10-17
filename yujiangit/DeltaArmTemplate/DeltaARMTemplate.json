@@ -192,7 +192,7 @@
 				"annotations": [],
 				"type": "RelationalTable",
 				"typeProperties": {
-					"tableName": "xvxzvcxcxxx"
+					"tableName": "xvxzvcxcxxxxxxxssxxxcc"
 				}
 			},
 			"dependsOn": [
