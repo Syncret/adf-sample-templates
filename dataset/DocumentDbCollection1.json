@@ -1,6 +1,0 @@
-{
-	"name": "DocumentDbCollection1",
-	"properties": {
-		"type": "DocumentDbCollection"
-	}
-}
