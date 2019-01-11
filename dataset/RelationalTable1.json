@@ -5,6 +5,9 @@
 			"referenceName": "linkedService1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "xxxx"
+		},
 		"type": "RelationalTable",
 		"typeProperties": {
 			"tableName": "xvxzvcxcxxxxxxxssxxxcc"
