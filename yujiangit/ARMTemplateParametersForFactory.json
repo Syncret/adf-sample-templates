@@ -8,12 +8,6 @@
 		"AmazonS31_secretAccessKey": {
 			"value": ""
 		},
-		"AzureBlobStorage1_sasUri": {
-			"value": ""
-		},
-		"AzureBlobStorage2_sasUri": {
-			"value": ""
-		},
 		"AzureSqlDatabase_connectionString": {
 			"value": ""
 		},
@@ -35,20 +29,32 @@
 		"AzureBlob1_properties_typeProperties_folderPath": {
 			"value": "@dataset().foldername"
 		},
-		"AzureBlob1c_properties_typeProperties_fileName": {
+		"AzureBlob1cx_properties_typeProperties_fileName": {
 			"value": "y"
 		},
-		"AzureBlob1c_properties_typeProperties_folderPath": {
+		"AzureBlob1cx_properties_typeProperties_folderPath": {
 			"value": "x"
 		},
-		"filetypedataset_properties_typeProperties_folderPath": {
+		"filetypedatasetx_properties_typeProperties_folderPath": {
 			"value": ""
 		},
 		"AmazonS31_properties_typeProperties_accessKeyId": {
 			"value": "xx"
 		},
+		"AzureBlobStorage1_sasUri": {
+			"value": ""
+		},
+		"AzureBlobStorage2_sasUri": {
+			"value": ""
+		},
 		"FileShare_properties_typeProperties_userId": {
 			"value": "a"
+		},
+		"linkedService1_properties_typeProperties_server": {
+			"value": "xcv"
+		},
+		"linkedService1_properties_typeProperties_database": {
+			"value": "xcv"
 		},
 		"linkedService1_properties_typeProperties_username": {
 			"value": "zxcv"
