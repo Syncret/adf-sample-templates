@@ -41,11 +41,11 @@
 		},
 		"AzureBlob1cx_properties_typeProperties_fileName": {
 			"type": "string",
-			"defaultValue": "y"
+			"defaultValue": "yzxcv"
 		},
 		"AzureBlob1cx_properties_typeProperties_folderPath": {
 			"type": "string",
-			"defaultValue": "x"
+			"defaultValue": "xzxcv"
 		},
 		"filetypedatasetx_properties_typeProperties_folderPath": {
 			"type": "string",
