@@ -93,7 +93,7 @@
 		},
 		"ADLS1_properties_typeProperties_folderPath": {
 			"type": "string",
-			"defaultValue": "Landing"
+			"defaultValue": "@dataset().filePath"
 		},
 		"linkedService2_properties_typeProperties_userName": {
 			"type": "string",
