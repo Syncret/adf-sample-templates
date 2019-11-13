@@ -1,0 +1,44 @@
+{
+	"name": "ADLS1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS1fang",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filePath": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureDataLakeStoreFile",
+		"structure": [
+			{
+				"name": "zcv"
+			},
+			{
+				"name": "zxcv"
+			},
+			{
+				"name": "zcvqa"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
+			},
+			"fileName": {
+				"value": "@dataset().fileName",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().filePath",
+				"type": "Expression"
+			}
+		}
+	}
+}
