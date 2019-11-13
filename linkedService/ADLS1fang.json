@@ -1,0 +1,16 @@
+{
+	"name": "ADLS1fang",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1",
+			"servicePrincipalId": "446db163-204e-4fa4-9a13-26846be6db21",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"subscriptionId": "eecfb6ee-86f1-45e1-bb7e-1f5b6bdf3951",
+			"resourceGroupName": "ADMS_UX_TEST",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIllVSklBTkdJVF80NmU5YTdjNC0wZDRiLTQ1YzctYTQxZC02ODMyNDBjNDBmM2YiDQp9"
+		}
+	}
+}
