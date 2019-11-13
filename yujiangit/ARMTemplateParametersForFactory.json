@@ -30,7 +30,7 @@
 			"value": "@dataset().fileName"
 		},
 		"ADLS1_properties_typeProperties_folderPath": {
-			"value": "xxxxx"
+			"value": "Landing"
 		},
 		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
 			"value": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1"

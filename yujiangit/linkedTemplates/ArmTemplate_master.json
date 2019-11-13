@@ -41,7 +41,7 @@
 		},
 		"ADLS1_properties_typeProperties_folderPath": {
 			"type": "string",
-			"defaultValue": "xxxxx"
+			"defaultValue": "Landing"
 		},
 		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
 			"type": "string",

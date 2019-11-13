@@ -93,7 +93,7 @@
 		},
 		"ADLS1_properties_typeProperties_folderPath": {
 			"type": "string",
-			"defaultValue": "xxxxx"
+			"defaultValue": "Landing"
 		},
 		"linkedService2_properties_typeProperties_userName": {
 			"type": "string",
@@ -291,7 +291,10 @@
 						"value": "[parameters('ADLS1_properties_typeProperties_fileName')]",
 						"type": "Expression"
 					},
-					"folderPath": "[parameters('ADLS1_properties_typeProperties_folderPath')]"
+					"folderPath": {
+						"value": "[parameters('ADLS1_properties_typeProperties_folderPath')]",
+						"type": "Expression"
+					}
 				}
 			},
 			"dependsOn": [
