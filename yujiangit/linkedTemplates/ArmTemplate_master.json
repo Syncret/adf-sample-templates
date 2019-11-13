@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService2'"
 		},
+		"ADLS1fang_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ADLS1fang'"
+		},
 		"AmazonS31_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "xx"
@@ -66,6 +70,34 @@
 		"linkedService2_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "xx"
+		},
+		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ADLS1fang_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "446db163-204e-4fa4-9a13-26846be6db21"
+		},
+		"ADLS1fang_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"ADLS1fang_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "eecfb6ee-86f1-45e1-bb7e-1f5b6bdf3951"
+		},
+		"ADLS1fang_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "ADMS_UX_TEST"
+		},
+		"ADLS1_properties_typeProperties_fileName": {
+			"type": "string",
+			"defaultValue": "@dataset().fileName"
+		},
+		"ADLS1_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": "@dataset().filePath"
 		},
 		"containerUri": {
 			"type": "string",
@@ -109,6 +141,9 @@
 					"linkedService1_password": {
 						"value": "[parameters('linkedService1_password')]"
 					},
+					"ADLS1fang_servicePrincipalKey": {
+						"value": "[parameters('ADLS1fang_servicePrincipalKey')]"
+					},
 					"linkedService2_password": {
 						"value": "[parameters('linkedService2_password')]"
 					},
@@ -136,8 +171,29 @@
 					"linkedService1_properties_typeProperties_username": {
 						"value": "[parameters('linkedService1_properties_typeProperties_username')]"
 					},
+					"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
+						"value": "[parameters('ADLS1fang_properties_typeProperties_dataLakeStoreUri')]"
+					},
+					"ADLS1fang_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ADLS1fang_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ADLS1fang_properties_typeProperties_tenant": {
+						"value": "[parameters('ADLS1fang_properties_typeProperties_tenant')]"
+					},
+					"ADLS1fang_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('ADLS1fang_properties_typeProperties_subscriptionId')]"
+					},
+					"ADLS1fang_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('ADLS1fang_properties_typeProperties_resourceGroupName')]"
+					},
 					"linkedService2_properties_typeProperties_userName": {
 						"value": "[parameters('linkedService2_properties_typeProperties_userName')]"
+					},
+					"ADLS1_properties_typeProperties_fileName": {
+						"value": "[parameters('ADLS1_properties_typeProperties_fileName')]"
+					},
+					"ADLS1_properties_typeProperties_folderPath": {
+						"value": "[parameters('ADLS1_properties_typeProperties_folderPath')]"
 					}
 				}
 			},

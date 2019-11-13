@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService1'"
 		},
+		"ADLS1fang_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ADLS1fang'"
+		},
 		"linkedService2_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService2'"
@@ -63,9 +67,37 @@
 			"type": "string",
 			"defaultValue": "zxcv"
 		},
+		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ADLS1fang_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "446db163-204e-4fa4-9a13-26846be6db21"
+		},
+		"ADLS1fang_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"ADLS1fang_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "eecfb6ee-86f1-45e1-bb7e-1f5b6bdf3951"
+		},
+		"ADLS1fang_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "ADMS_UX_TEST"
+		},
 		"linkedService2_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "xx"
+		},
+		"ADLS1_properties_typeProperties_fileName": {
+			"type": "string",
+			"defaultValue": "@dataset().fileName"
+		},
+		"ADLS1_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": "@dataset().filePath"
 		}
 	},
 	"variables": {
@@ -200,6 +232,27 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ADLS1fang')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDataLakeStore",
+				"typeProperties": {
+					"dataLakeStoreUri": "[parameters('ADLS1fang_properties_typeProperties_dataLakeStoreUri')]",
+					"servicePrincipalId": "[parameters('ADLS1fang_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('ADLS1fang_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('ADLS1fang_properties_typeProperties_tenant')]",
+					"subscriptionId": "[parameters('ADLS1fang_properties_typeProperties_subscriptionId')]",
+					"resourceGroupName": "[parameters('ADLS1fang_properties_typeProperties_resourceGroupName')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/linkedService2')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -221,6 +274,55 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADLS1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ADLS1fang",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filePath": {
+						"type": "string"
+					},
+					"fileName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureDataLakeStoreFile",
+				"structure": [
+					{
+						"name": "zcv"
+					},
+					{
+						"name": "zxcv"
+					},
+					{
+						"name": "zcvqa"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "JsonFormat",
+						"filePattern": "setOfObjects"
+					},
+					"fileName": {
+						"value": "[parameters('ADLS1_properties_typeProperties_fileName')]",
+						"type": "Expression"
+					},
+					"folderPath": {
+						"value": "[parameters('ADLS1_properties_typeProperties_folderPath')]",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ADLS1fang')]"
 			]
 		}
 	]
