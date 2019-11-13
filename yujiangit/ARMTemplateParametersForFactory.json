@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "yujiangit"
 		},
+		"ADLS1fang_servicePrincipalKey": {
+			"value": ""
+		},
 		"AmazonS31_secretAccessKey": {
 			"value": ""
 		},
@@ -23,8 +26,26 @@
 		"linkedService2_password": {
 			"value": ""
 		},
-		"ADLS1fang_servicePrincipalKey": {
-			"value": ""
+		"ADLS1_properties_typeProperties_fileName": {
+			"value": "@dataset().fileName"
+		},
+		"ADLS1_properties_typeProperties_folderPath": {
+			"value": "xxxxx"
+		},
+		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
+			"value": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ADLS1fang_properties_typeProperties_servicePrincipalId": {
+			"value": "446db163-204e-4fa4-9a13-26846be6db21"
+		},
+		"ADLS1fang_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"ADLS1fang_properties_typeProperties_subscriptionId": {
+			"value": "eecfb6ee-86f1-45e1-bb7e-1f5b6bdf3951"
+		},
+		"ADLS1fang_properties_typeProperties_resourceGroupName": {
+			"value": "ADMS_UX_TEST"
 		},
 		"AmazonS31_properties_typeProperties_accessKeyId": {
 			"value": "xx"
@@ -52,27 +73,6 @@
 		},
 		"linkedService2_properties_typeProperties_userName": {
 			"value": "xx"
-		},
-		"ADLS1fang_properties_typeProperties_dataLakeStoreUri": {
-			"value": "https://fangldatalake.azuredatalakestore.net/webhdfs/v1"
-		},
-		"ADLS1fang_properties_typeProperties_servicePrincipalId": {
-			"value": "446db163-204e-4fa4-9a13-26846be6db21"
-		},
-		"ADLS1fang_properties_typeProperties_tenant": {
-			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-		},
-		"ADLS1fang_properties_typeProperties_subscriptionId": {
-			"value": "eecfb6ee-86f1-45e1-bb7e-1f5b6bdf3951"
-		},
-		"ADLS1fang_properties_typeProperties_resourceGroupName": {
-			"value": "ADMS_UX_TEST"
-		},
-		"ADLS1_properties_typeProperties_fileName": {
-			"value": "@dataset().fileName"
-		},
-		"ADLS1_properties_typeProperties_folderPath": {
-			"value": "@dataset().filePath"
 		}
 	}
 }
