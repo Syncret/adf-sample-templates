@@ -23,21 +23,6 @@
 		"linkedService2_password": {
 			"value": ""
 		},
-		"AzureBlob1_properties_typeProperties_fileName": {
-			"value": ""
-		},
-		"AzureBlob1_properties_typeProperties_folderPath": {
-			"value": "@dataset().foldername"
-		},
-		"AzureBlob1cx_properties_typeProperties_fileName": {
-			"value": "yzxcv"
-		},
-		"AzureBlob1cx_properties_typeProperties_folderPath": {
-			"value": "xzxcv"
-		},
-		"filetypedatasetx_properties_typeProperties_folderPath": {
-			"value": ""
-		},
 		"AmazonS31_properties_typeProperties_accessKeyId": {
 			"value": "xx"
 		},
@@ -46,6 +31,9 @@
 		},
 		"AzureBlobStorage2_sasUri": {
 			"value": ""
+		},
+		"FileShare_properties_typeProperties_host": {
+			"value": "\\\\aa"
 		},
 		"FileShare_properties_typeProperties_userId": {
 			"value": "a"

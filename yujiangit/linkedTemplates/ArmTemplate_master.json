@@ -4,7 +4,7 @@
 	"parameters": {
 		"factoryName": {
 			"type": "string",
-			"metadata": "Data Factory Name",
+			"metadata": "Data Factory name",
 			"defaultValue": "yujiangit"
 		},
 		"AmazonS31_secretAccessKey": {
@@ -31,26 +31,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService2'"
 		},
-		"AzureBlob1_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": ""
-		},
-		"AzureBlob1_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "@dataset().foldername"
-		},
-		"AzureBlob1cx_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "yzxcv"
-		},
-		"AzureBlob1cx_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "xzxcv"
-		},
-		"filetypedatasetx_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": ""
-		},
 		"AmazonS31_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "xx"
@@ -62,6 +42,10 @@
 		"AzureBlobStorage2_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'AzureBlobStorage2'"
+		},
+		"FileShare_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\aa"
 		},
 		"FileShare_properties_typeProperties_userId": {
 			"type": "string",
@@ -89,7 +73,7 @@
 		},
 		"containerSasToken": {
 			"type": "string",
-			"metadata": "Sas Token to storage account containing linked ARM templates"
+			"metadata": "Sas token to storage account containing linked ARM templates"
 		}
 	},
 	"variables": {
@@ -137,6 +121,9 @@
 					"AzureBlobStorage2_sasUri": {
 						"value": "[parameters('AzureBlobStorage2_sasUri')]"
 					},
+					"FileShare_properties_typeProperties_host": {
+						"value": "[parameters('FileShare_properties_typeProperties_host')]"
+					},
 					"FileShare_properties_typeProperties_userId": {
 						"value": "[parameters('FileShare_properties_typeProperties_userId')]"
 					},
@@ -148,21 +135,6 @@
 					},
 					"linkedService1_properties_typeProperties_username": {
 						"value": "[parameters('linkedService1_properties_typeProperties_username')]"
-					},
-					"AzureBlob1_properties_typeProperties_fileName": {
-						"value": "[parameters('AzureBlob1_properties_typeProperties_fileName')]"
-					},
-					"AzureBlob1_properties_typeProperties_folderPath": {
-						"value": "[parameters('AzureBlob1_properties_typeProperties_folderPath')]"
-					},
-					"AzureBlob1cx_properties_typeProperties_fileName": {
-						"value": "[parameters('AzureBlob1cx_properties_typeProperties_fileName')]"
-					},
-					"AzureBlob1cx_properties_typeProperties_folderPath": {
-						"value": "[parameters('AzureBlob1cx_properties_typeProperties_folderPath')]"
-					},
-					"filetypedatasetx_properties_typeProperties_folderPath": {
-						"value": "[parameters('filetypedatasetx_properties_typeProperties_folderPath')]"
 					},
 					"linkedService2_properties_typeProperties_userName": {
 						"value": "[parameters('linkedService2_properties_typeProperties_userName')]"
