@@ -1,0 +1,10 @@
+{
+	"name": "Teradata1",
+	"properties": {
+		"annotations": [],
+		"type": "Teradata",
+		"typeProperties": {
+			"connectionString": "DbcName=aaa;UID=aaa;PWD=aaaa"
+		}
+	}
+}
