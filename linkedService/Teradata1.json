@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "Teradata",
 		"typeProperties": {
-			"connectionString": "DbcName=aa;UID=aa;PWD=aa"
+			"connectionString": "DbcName=aa;UID=aa;PWD=123"
 		}
 	}
 }
